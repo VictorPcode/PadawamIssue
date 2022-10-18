@@ -69,6 +69,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'djangogirlproject.wsgi.application'
 
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'blog',
+]
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

@@ -1,85 +1,56 @@
-{%load static%}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
 
-    <title>VPCODE</title>
-
-    
-</head>
-<body style="margin: 1px;">
-    <header>
-        <h1>victorPcode</h1>
-    </header>
-    <nav class="nav">
-        <ul>
-            <li><a href="/">inicio</a></li>
-            <li><a href="/">desarrollo</a></li>
-            <li><a href="/">servicios</a></li>
-            <li><a href="/">hosting</a></li>
-            <li><a href="/">infraestructura</a></li>
-        </ul>
-    </nav>
+{% extends 'blog/base.html' %}
+{% block content %}
 
 <div class="content">
-    <div class="firstContent">
-    <section>
-        <div id="demo" class="carousel slide" data-ride="carousel">
+  <div class="firstContent">
+  <section>
+      <div id="demo" class="carousel slide" data-ride="carousel">
 
-            
-            <ul class="carousel-indicators">
-              <li data-target="#demo" data-slide-to="0" class="active"></li>
-              <li data-target="#demo" data-slide-to="1"></li>
-              <li data-target="#demo" data-slide-to="2"></li>
-            </ul>
-            
-            
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="https://images.unsplash.com/photo-1639066648921-82d4500abf1a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80" alt="Los Angeles" width="1100" height="500">
-              </div>
-              <div class="carousel-item">
-                <img src="https://images.unsplash.com/photo-1591808216268-ce0b82787efe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="Chicago" width="1100" height="500">
-              </div>
-              <div class="carousel-item">
-                <img src="https://images.unsplash.com/photo-1608306448197-e83633f1261c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="New York" width="1100" height="500">
-              </div>
+          
+          <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+          </ul>
+          
+          
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="https://images.unsplash.com/photo-1639066648921-82d4500abf1a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80" alt="Los Angeles" width="1100" height="500">
             </div>
-            
-            
-            <a class="carousel-control-prev" href="#demo" data-slide="prev">
-              <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#demo" data-slide="next">
-              <span class="carousel-control-next-icon"></span>
-            </a>
+            <div class="carousel-item">
+              <img src="https://images.unsplash.com/photo-1591808216268-ce0b82787efe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="Chicago" width="1100" height="500">
+            </div>
+            <div class="carousel-item">
+              <img src="https://images.unsplash.com/photo-1608306448197-e83633f1261c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="New York" width="1100" height="500">
+            </div>
           </div>
-    </section>
-       
-    <aside>
-        <h1>PUBLICACIONES</h1>
-        {% for post in posts %}
-        <article>
-            <time>published: {{ post.published_date }}</time>
-            <h2><a href="">{{ post.title }}</a></h2>
-            <p>{{ post.text|linebreaksbr }}</p>
-        </article>
-        {% endfor %}
-    </aside>
-    </div>
-</div>
+          
+          
+          <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#demo" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
+  </section>
+  
+  
+  <aside>
+      <h1>PUBLICACIONES</h1>
+      {% for post in posts %}
+      <article>
+          <time>published: {{ post.published_date }}</time>
+          <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+          <p>{{ post.text|linebreaksbr }}</p>
+      </article>
+      {% endfor %}
+  </aside>
    
 
+  </div>
+</div>
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-
-</body>
-</html>
+  {% endblock %}
